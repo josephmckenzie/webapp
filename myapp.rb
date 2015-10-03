@@ -15,7 +15,18 @@ end
 
 get "/add/:int1/:int2/:int3" do |a,b,c|
 
-"#{a}+#{b}*#{c}= #{a.to_i + b.to_i*c.to_i}"
-
-
+"#{a}+#{b}*#{c} = #{a.to_i + b.to_i*c.to_i}"
 end
+
+get '/3para/:name/:word/:int1' do |name1,name2,numb1|
+
+"#{name1}" + "#{name2}" + "#{numb1.to_i*4}"
+end
+
+
+get '/details' do
+	erb :username
+	end
+	
+
+
