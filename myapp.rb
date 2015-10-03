@@ -15,7 +15,7 @@ end
 
 get "/add/:int1/:int2/:int3" do |a,b,c|
 
-"#{a.to_i + b.to_i*c.to_i}"
+"#{a}+#{b}*#{c}= #{a.to_i + b.to_i*c.to_i}"
 
 
 end
