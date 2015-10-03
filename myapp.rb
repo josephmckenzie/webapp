@@ -34,7 +34,21 @@ erb:age, :locals => {:name => params[:user]}
 end
 
 post '/age' do
+age = params["age"].to_i
+if age <60 
+erb:numbers 
 
-	"In ten years: #{params[:age].to_i + 10}."
+else
+	"In ten years your old butt will be: #{age + 10}."
 		end
-	
+		end
+
+post '/numbers' do
+f1=params['Favorite_Numbers1'].to_i
+f2=params['Favorite_Numbers2'].to_i
+f3=params['Favorite_Numbers3'].to_i
+
+"The sum of your favorite numbers is : #{f1+f2+f3}"
+
+end
+
