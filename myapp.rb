@@ -1,5 +1,5 @@
 require 'sinatra.rb'
 
 get '/' do 
-'Hello world!'
+'My name is Joseph Mckenzie'
 end
