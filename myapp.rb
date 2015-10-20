@@ -52,3 +52,32 @@ f3=params['Favorite_Numbers3'].to_i
 
 end
 
+get '/login' do
+	erb :login
+end
+
+before do
+	@user = params[:username]
+	@pass = params[:password]
+end
+
+def authenticate
+	file = File.open('public/authentication.csv', 'r')
+	@a = 0
+	file.each do |user|
+		userpass = user.split(",")
+		username = userpass[0]
+		password = userpass[1].chomp
+	if  username == @user && password == @pass
+		@a += 1
+	end
+end
+end
+
+post '/login' do
+authenticate
+	if @a == 1
+	erb :main, :locals => {:username => params[:username]}
+	else erb :invalid
+	end
+end
