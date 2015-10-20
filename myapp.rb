@@ -54,6 +54,7 @@ end
 
 get '/login' do
 	erb :login
+	
 end
 
 before do
@@ -63,13 +64,13 @@ end
 
 def authenticate
 	file = File.open('public/authentication.csv', 'r')
-	@auth = 0
+	
 	file.each do |user|
 		username_password = user.split(",")
 		username = username_password[0]
 		password = username_password[1].chomp
 	if  username == @username && password == @password
-		@auth += 1
+		@auth = 1
 	end
 end
 end
@@ -78,12 +79,10 @@ post '/login' do
 authenticate
 	if @auth == 1
 	erb :main
-	else erb :login
-	
-  end
+	else redirect back
+	end
+	end
 
-		end
-		
 	
 		
 #having issues putting up a message when invalid user/password combo I can however just do apage that 
