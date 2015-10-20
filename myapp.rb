@@ -57,27 +57,36 @@ get '/login' do
 end
 
 before do
-	@user = params[:username]
-	@pass = params[:password]
+	@username = params[:username]
+	@password = params[:password]
 end
 
 def authenticate
 	file = File.open('public/authentication.csv', 'r')
-	@a = 0
+	@auth = 0
 	file.each do |user|
-		userpass = user.split(",")
-		username = userpass[0]
-		password = userpass[1].chomp
-	if  username == @user && password == @pass
-		@a += 1
+		username_password = user.split(",")
+		username = username_password[0]
+		password = username_password[1].chomp
+	if  username == @username && password == @password
+		@auth += 1
 	end
 end
 end
 
 post '/login' do
 authenticate
-	if @a == 1
-	erb :main, :locals => {:username => params[:username]}
-	else erb :invalid
-	end
-end
+	if @auth == 1
+	erb :main
+	else erb :login
+	
+  end
+
+		end
+		
+	
+		
+#having issues putting up a message when invalid user/password combo I can however just do apage that 
+#would look like it was same login page and display an error message This is what invalid view does
+# so just change line 81 to :invalid instead of looping back to login and it will display an message and 
+#allow you to retype username and password
