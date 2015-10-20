@@ -85,7 +85,7 @@ authenticate
 
 	
 		
-#having issues putting up a message when invalid user/password combo I can however just do apage that 
+#having issues putting up a message when invalid user/password combo I can however just do a page that 
 #would look like it was same login page and display an error message This is what invalid view does
-# so just change line 81 to :invalid instead of looping back to login and it will display an message and 
+# so just change line 82 to :invalid instead of redirecting back to login and it will display an message and 
 #allow you to retype username and password
