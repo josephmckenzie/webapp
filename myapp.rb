@@ -53,7 +53,7 @@ f3=params['Favorite_Numbers3'].to_i
 end
 
 get '/login' do
-	erb :login
+	erb :login ,:locals => {:message => "!!Type in your username and password!!"}
 	
 end
 
@@ -78,11 +78,12 @@ end
 post '/login' do
 authenticate
 	if @auth == 1
-	erb :main
-	else redirect back
-	end
-	end
+    erb :main,:locals => {:message => "BOOO You were right!!! BOOOO "}
+    else erb:login,:locals => {:message => "Failed"}
+    end
+    end
 
+	
 	
 		
 #having issues putting up a message when invalid user/password combo I can however just do a page that 
